@@ -1,13 +1,17 @@
 import React from 'react';
+import './ValidationComponent.css'
 
 const validation = (props) => {
+    let validationMessage = "Text too short"
+    let short = true;
+
+    if(props.inputLength > 4) {
+        validationMessage = "Text long enough"
+        short = false;
+    }
     return (
         <div>
-            {
-                props.inputLength > 4 ?
-                 <p>Text long enough</p>: 
-                 <p>Text too short </p>
-            }
+            <p className={short ? 'red' : 'green'}>{validationMessage}</p>
         </div>
     );
 };
